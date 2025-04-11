@@ -18,7 +18,7 @@ from typing import (
 from copy import copy, deepcopy
 from numpy import ndarray
 from pathlib import Path
-
+import numpy as np
 import pandas as pd
 
 __all__ = ["Namespace", "namespacify", "is_disjoint", "is_subset", "is_superset"]
@@ -532,7 +532,7 @@ def all_true(obj: Any) -> bool:
         assert all_true(ns) == True
         ```
     """
-    if isinstance(obj, (type(None), bool, int, float, str, type, bytes)):
+    if isinstance(obj, (type(None), bool, int, float, str, type, bytes, np.generic)):
         return bool(obj)
     elif isinstance(obj, Path):
         return bool(obj)
